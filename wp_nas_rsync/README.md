@@ -1,9 +1,10 @@
 # Bash script WordPResss Backup via RSYNC to NAS drive
 Example of code expalined here  http://www.abrandao.com/2017/07/backup-script-wordpress-offsite-nas-via-rsync/
 
+
 This script creates a compressed backup archive of the given directory WORDPRESS folder (option to excluding) 
 and given MySQL database.  Using standard zip (unix utility) to compressor and archive the various folders
-Finally script will  RSYNC backup to an offsite location
+Finally script will  RSYNC backup to an offsite location.
 #
  Feel free to use this script wherever you want, however you want. We produce open source, GPLv2 licensed stuff.
 Author: Antonio Brandao July 2017 based off script from Konstantin Kovshenin exclusively for Theme.fm in June, 2011
