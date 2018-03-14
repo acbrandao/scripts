@@ -29,17 +29,18 @@ Change the permissions to execute `chmod +x zipup_wp.sh`
 
  To Run simply execute the script as :
 
-'''
+```
 /zipup.sh
-'''
+```
 
   To execute  in a regular basis use the a cron entry as below
-'''
+```
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h     dom mon dow   command
   0  5,20 *   *    *   /home/backup/zipup_wp.sh   #backups up at 5am and 8pm daily.
-'''
+  
+```
 
 
 ## Contributing
