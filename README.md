@@ -1,2 +1,3 @@
 # Various Shell Scripts : bash etc... 
-Shell scripts mostly for Linux systems . This is where I will keep utility scripts that I find useful and will serve as a reference library
+Shell scripts mostly for Linux systems . This is where I will keep utility SNIPPETS and shell scripts that I find useful and will serve as a reference library.
+Most of the scripts are pretty short and self-explanatory.
