@@ -1,5 +1,3 @@
-  GNU nano 2.5.3                             File: url_changed.sh                                                                  
-
 #!/bin/bash
 
 #Checks a particular URL site if a folder has changed or not
