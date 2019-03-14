@@ -12,11 +12,11 @@ ffmpeg -i TriRock-Olympic_B.MOV -c copy -bsf:v h264_mp4toannexb temp1.ts
 ffmpeg -i "concat:temp0.ts|temp1.ts" -c copy -bsf:a aac_adtstoasc merged_video.mp4
 ```
 
-##trim video from to
+### trim video from to
 ```shell
 ffmpeg -ss [00:00:0.000] -i in.mp4 -t [duration] -c:v copy -c:a copy out.mp4
 ```
-#trim video sections cut without re-encoding
+### trim video sections cut without re-encoding
 ```shell
 ffmpeg -i video.mp4 -vcodec copy -acodec copy -ss 00:00:55.000 -t 01:19:25.000 video_out.mp4 
 ffmpeg -i 2015_SunsetClassic.mp4 -s 1280x720 2015_SunsetClassic720p.mp4
