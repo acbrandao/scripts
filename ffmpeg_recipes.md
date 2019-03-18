@@ -35,7 +35,7 @@ ffmpeg -i source_video.mp4 .mp4 -ss 00:00:00 -t 01:20:15 -c:v copy -c:a copy out
 ffmpeg -i source_video.mp4 -vcodec libx264 -crf 22 out.mp4
 ffmpeg -i TriPhilBike120.mp4  -sws_flags lanczos+accurate_rnd -vf "scale=320:240" -c:v libx264 -crf 20 -preset fast -profile:v main -tune fastdecode -c:a copy TriPhilBike960.mp4
 ```
-### Scale to shrink video
+### Scale to shrink video size
 ```shell
-ffmpeg -i TriPhilBike120.mp4  -filter:v scale=960:-1 -c:a copy TriPhilBike960.mp4
+ffmpeg -i in.mp4  -filter:v scale=960:-1 -c:a copy out.mp4
 ```
