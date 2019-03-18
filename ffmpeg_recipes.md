@@ -1,3 +1,10 @@
+## FFMPEG Recipes and shortcuts
+
+Below are some of the common shortcuts and recipes that I used to manipulate video , to cut, trim, optimize and transcode video when  needed.  I typicall yfind myself combining multiple clips and other times extracting sepcific segments. Of course I can always open up the clips in Premiere [[https://www.adobe.com/products/premiere-elements.html ]] or DaVinci Resolve [[https://www.blackmagicdesign.com/products/davinciresolve ]] but sometimes its just easier, especially for long or complicated workflows , its easier to use the command line.
+
+## REquires:
+A recent copy of [[https://ffmpeg.org/ | FFMPEG]]  video codec utilities.
+* Download and install FFMPEG for Linux , Windows or Max https://ffmpeg.org/download.html
 
 ### Merge multiple Video clips (same format) into one file
 ```shell
