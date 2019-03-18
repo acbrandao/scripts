@@ -15,7 +15,7 @@ usage()
 {
 cat << EOF
 USAGE:
-backuprot [OPTIONS] /source_folder/ /destination_folder/
+backup_rotate.sh [OPTIONS] /source_folder/ /destination_folder/
 
 Back up and entire folder, creates tgz and ,
 performs x day rotation of backups Must provide source anddestination folders
@@ -24,13 +24,13 @@ OPTIONS:
 -p Specify Rotation period in days - default is $ROTATE_PERIOD
 
 EXAMPLES:
-backuprot -p 5 [/source_folder/] [/destination_folder/]
+backup_rotate.sh -p 5 [/source_folder/] [/destination_folder/]
 
 EOF
 }
 
 #### Getopts #####
-while getopts ":p " opt; do
+while getopts ":p:" opt; do
 case "$opt" in
 p) ROTATE_PERIOD=${OPTARG};;
 
