@@ -1,5 +1,5 @@
 #!/bin/bash
 
-#Checks your system for any LARGE files over 100MB in size
+#Checks your system for any LARGE files over 50MB in size
 
-find / -xdev -type f -size +100M
+find / -type f -size +50M -exec ls -lh {} \; | awk '{ print $NF ": " $5 }'
