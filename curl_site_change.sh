@@ -7,7 +7,7 @@
 
 URL="http://www.abrandao.com"
 MAIL_TO="your@address.com"
-SESSION_D="DEADBEEF"
+SESSION_ID="DEADBEEF"
 
 echo "Checking for URL Changes at $URL"
 
