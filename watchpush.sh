@@ -1,6 +1,6 @@
 ###############################################
-#  Simple script filewatcer Awaits file changes on DEV_FOLDER then
-#  updates TARGET Folder with changes using rsync.
+#  Simple script filewatcher, awaits  file changes on DEV_FOLDER then
+#  copies them to the  TARGET Folder withusing RSYNC .
 #  If permissions in TARGET folder different  then Requires SSH keyless setup for file copy
 ###############################################
 DEV_FOLDER=/home/username/code/src
