@@ -22,7 +22,8 @@ This takes the sample2.mp4 file, and outputs sample-trimmed.mp4 which is just th
 
 ### Compressing video files
 Optimize video file to a specific scale (1280, 960) etc. Please note that you will lose the quality if you try to reduce the video file size. You can lower that crf value to 23 or lower if 24 is too aggressive.
-```ffmpeg -i input.mp4 -vf scale=960:-1 -c:v libx264 -preset veryslow -crf 24 output.mp4```
+
+```ffmpeg -i input.mp4 -vf scale=1280:-1 -c:v libx264 -preset veryslow -crf 24 output.mp4```
 
 ### Compressing audio files
 -ab indicated the bit rate to re-encode at: 96,112,128,160,192...320kpbs
