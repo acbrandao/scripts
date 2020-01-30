@@ -5,6 +5,41 @@ Below are some of the common shortcuts and recipes that I used to manipulate vid
 ## REquires:
 A recent copy of [FFMPEG ] (https://ffmpeg.org/ )  video codec utilities.
 * Download and install FFMPEG for Linux , Windows or Max https://ffmpeg.org/download.html
+* More good examples here: https://www.ostechnix.com/20-ffmpeg-commands-beginners/
+
+### Extract A Video Clip
+This takes the sample2.mp4 file, and outputs sample-trimmed.mp4 which is just the video between 2 seconds and 67
+```ffmpeg -i sample2.mp4 -vf trim=2:67 -an sample2-trimmed.mp4```
+
+### Add padding to make a video a certain size
+```ffmpeg -i input.mp4 -vf pad=800:600:160:60:black -an output.mp4```
+
+### Extract audio only (mp3) from video file
+```ffmpeg -i input.mp4 -vn output.mp3```
+
+### Change Video size resolution
+```ffmpeg -i input.mp4 -filter:v scale=1280:720 -c:a copy output.mp4```
+
+### Compressing video files
+Optimize video file to a specific scale (1280, 960) etc. Please note that you will lose the quality if you try to reduce the video file size. You can lower that crf value to 23 or lower if 24 is too aggressive.
+```ffmpeg -i input.mp4 -vf scale=960:-1 -c:v libx264 -preset veryslow -crf 24 output.mp4```
+
+### Compressing audio files
+-ab indicated the bit rate to re-encode at: 96,112,128,160,192...320kpbs
+```ffmpeg -i input.mp3 -ab 128 output.mp3```
+
+### Extracting images from the video
+Extract video frames into seperate iamge files.
+```ffmpeg -i input.mp4 -r 1 -f image2 image-%2d.png```
+
+### Cropping a video to a rectangular area
+Let us say you want to a video with a width of 640 pixels and a height of 480 pixels, 
+from the position (200,150), the command would be:
+```ffmpeg -i input.mp4 -filter:v "crop=640:480:200:150" output.mp4```
+general foramt is
+```ffmpeg -i input.mp4 -filter:v "crop=w:h:x:y" output.mp4```
+
+
 
 ### Merge multiple Video clips (same format) into one file
 ```shell
