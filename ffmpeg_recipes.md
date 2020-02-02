@@ -17,6 +17,16 @@ This takes the sample2.mp4 file, and outputs sample-trimmed.mp4 which is just th
 ### Extract audio only (mp3) from video file
 ```ffmpeg -i input.mp4 -vn output.mp3```
 
+### Change video format .MOV to .MP4
+Withouth re-encoding it
+
+```ffmpeg -i movie.mov -vcodec copy -acodec copy out.mp4```
+with encoding highest quality
+
+```ffmpeg -i input.mov -q:v 0 output.mp4```
+
+
+
 ### Change Video size resolution
 ```ffmpeg -i input.mp4 -filter:v scale=1280:720 -c:a copy output.mp4```
 
