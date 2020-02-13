@@ -2,6 +2,13 @@
 Shell scripts mostly for Linux systems . This is where I will keep utility SNIPPETS and shell scripts that I find useful and will serve as a reference library.
 Most of the scripts are pretty short and self-explanatory.
 
+# Simple one / two line shell scripts that may be usefull
+
+  - Get directory listing with filesize in human readable format
+    ``` du -shc uploads/2019/*  ```  
+  - Find largest file in a directory recursively
+     ``` sudo du -ah | sort -n -r | head 0n 20 ```
+
 # Running
 Simply chmod +x <scriptname > and run them form a linux command line
   
