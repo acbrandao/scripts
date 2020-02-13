@@ -7,7 +7,7 @@ Most of the scripts are pretty short and self-explanatory.
   - Get directory listing with filesize in human readable format
     ``` du -shc uploads/2019/*  ```  
   - Find largest file in a directory recursively
-     ``` sudo du -ah | sort -n -r | head 0n 20 ```
+     ``` sudo du -ah /dir_name/ | sort -n -r | head -n 20 ```
 
 # Running
 Simply chmod +x <scriptname > and run them form a linux command line
