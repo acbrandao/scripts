@@ -69,19 +69,19 @@ exit 0;
 fi
 
 echo "\nCreating $SOURCE_FOLDER/$TGZFILE ... "
-tar zcvf $SOURCE_FOLDER/$TGZFILE $SOURCE_FOLDER
+tar zcvf "$SOURCE_FOLDER/$TGZFILE" "$SOURCE_FOLDER"
 echo "\nCopying $SOURCE_FOLDER/$TGZFILE to $LATEST_FILE ... "
-cp $SOURCE_FOLDER/$TGZFILE $SOURCE_FOLDER/$LATEST_FILE
+cp "$SOURCE_FOLDER/$TGZFILE" "$SOURCE_FOLDER/$LATEST_FILE"
 
 echo "\nMoving $TGZFILE -- to --> $DESTINATION_FOLDER "
-mv $SOURCE_FOLDER/$TGZFILE $DESTINATION_FOLDER
+mv "$SOURCE_FOLDER/$TGZFILE" "$DESTINATION_FOLDER"
 
 echo "\nMoving $LATEST_FILE -- to --> $DESTINATION_FOLDER "
-mv $SOURCE_FOLDER/$LATEST_FILE $DESTINATION_FOLDER
+mv "$SOURCE_FOLDER/$LATEST_FILE" "$DESTINATION_FOLDER"
 # count the number of file(s) in the appropriate folder Rotate the logs, delete older than
 # ROTATE_PERIOD days, if their are at_least 7 backups
 
-FILE_COUNT=`find $DESTINATION_FOLDER -maxdepth 1 -type f | wc -l`
+FILE_COUNT=`find "$DESTINATION_FOLDER" -maxdepth 1 -type f | wc -l`
 echo "\n Rotation period $ROTATE_PERIOD for $DESTINATION_FOLDER "
 echo "\n $FILE_COUNT files found in $DESTINATION_FOLDER folder"
 echo "\n find $DESTINATION_FOLDER -mtime +$ROTATE_PERIOD"
@@ -89,14 +89,14 @@ echo "\n -----------------------------------"
 if [ $FILE_COUNT -gt $ROTATE_PERIOD ]; then
 echo "Removing backups older than $ROTATE_PERIOD in $DESTINATION_FOLDER"
 echo "Removing these old backup files..."
-find $DESTINATION_FOLDER -mtime +$ROTATE_PERIOD -exec rm {} \;
+find "$DESTINATION_FOLDER" -mtime +$ROTATE_PERIOD -exec rm {} \;
 else
 echo "Only $FILE_COUNT file, NOT removing older backups in $DESTINATION_FOLDER "
 fi
 fi
 
 echo "----------------"
-echo "Backup_rot Complete. :"
+echo "Backup Rotation Complete. :"
 echo "to extract file >> tar -xzvf $TGZFILE "
 
  
