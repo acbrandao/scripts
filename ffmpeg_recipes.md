@@ -52,6 +52,25 @@ general foramt is
 
 
 
+### Batch Convert (re-encode)  all FILES with better quality
+```
+for %%a in ("*.*") do ffmpeg -i "%%a" -c:v libx264 -preset slow -crf 20 -c:a libvo_aacenc -b:a 128k "%%~na.mp4"
+pause
+```
+
+### Convert all *.avi files to mp4 with h264 and aac audio
+```
+for %%a in ("*.avi") do ffmpeg -i "%%a" -c:v libx264 -preset slow -crf 20 -c:a aac -b:a 128k "newfiles\%%~na.mp4"
+pause
+```
+
+###  Convert *.mkv files to mp4 and just copy the video and audio streams
+```
+for %%a in ("*.mkv") do ffmpeg -i "%%a" -vcodec copy -acodec copy "newfiles\%%~na.mp4"
+pause
+```
+
+
 ### Merge multiple Video clips (same format) into one file
 ```shell
 ffmpeg -i 1.MOV -c:v copy -c:a aac -strict -2 1.mp4
