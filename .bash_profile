@@ -1,7 +1,6 @@
 #   -------------------------------
 #   1. ENVIRONMENT CONFIGURATION
 #   -------------------------------
-
 #   Change Prompt
 #   ------------------------------------------------------------
 # export PS1="________________________________________________________________________________\n| \w @ \h (\u) \n| => "
@@ -18,10 +17,13 @@
     export EDITOR=/usr/bin/nano
 # export EDITOR=/home/ab959h/mirco
 
-#   Set default blocksize for ls, df, du
-#   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
-#   ------------------------------------------------------------
-    export BLOCKSIZE=1k
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize              
+
+# Automatically navigate to folder when autocompelted
+shopt -s autocd  
 
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
@@ -53,7 +55,7 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias edit='nano -c '                           # edit:         Opens any file in sublime editor
+alias edit='nano -c '                       # edit:         Opens any file in nano with line # editor
 alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
 alias which='type -all'                     # which:        Find executables
@@ -61,10 +63,8 @@ alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable 
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
-alias grep='grep -nir --color=auto'
+alias grep='grep -nir --color=auto'         # grep search 
 
-trash () { command mv "$@" /tmp ; }     # trash:        Moves a file to the MacOS trash
-alias DT='tee ~/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 
 
 # Alias's to modified commands, the fun part
@@ -103,8 +103,6 @@ alias dns="cat /etc/resolv.conf"
 # List your device's transfer info (you may need to change your device, and you must have tcptrack installed)
 alias tcptrack="sudo tcptrack -i wlan0"   
  
-
-
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
@@ -127,10 +125,9 @@ alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\
 
 zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
 alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
-alias make1mb='mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1mb size (all zeros)
-alias make5mb='mkfile 5m ./5MB.dat'         # make5mb:      Creates a file of 5mb size (all zeros)
-alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10mb size (all zeros)
-
+alias make1mb='xfs_mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1mb size (all zeros)
+alias make5mb='xfs_mkfile 5m ./5MB.dat'         # make5mb:      Creates a file of 5mb size (all zeros)
+alias make10mb='xfs_mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10mb size (all zeros)
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
@@ -211,7 +208,8 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 #   6. NETWORKING
 #   ---------------------------
 
-alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
+alias myip='curl ident.me'                    # myip:         Public facing IP Address
+alias myiplan='ifconfig -a'                         # myip address LAN
 alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
 alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
 alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
@@ -248,6 +246,19 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
     alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
 
 #   ---------------------------------------
+#  PACKAGE MANAGEMENT 
+#   ---------------------------------------
+
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+
+# Power
+alias reboot="sudo shutdown -r now"
+alias off="sudo shutdown -h now"
+
+#   ---------------------------------------
 #   8. WEB DEVELOPMENT
 #   ---------------------------------------
 
@@ -258,8 +269,52 @@ alias herr='tail /var/log/httpd/error_log'              # herr:             Tail
 alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
 httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
 
+alias la='ls -lah $LS_COLOR' 
+# awesome!  CD AND LA. I never use 'cd' anymore... 
+function cl(){ cd "$@" && la; } 
+
 #   httpDebug:  Download a web page and show info on what took time
 #   -------------------------------------------------------------------
     httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
 
+#   ---------------------------------------
+#  GIT COMMANDS
+#   ---------------------------------------
+
+if [ -f /etc/bash_completion ]; then 
+    . /etc/bash_completion 
+fi 
+if [ -f /etc/bash_completion.d/git-completion.bash ]; then 
+    . /etc/bash_completion.d/git-completion.bash; 
+fi 
+export GIT_PS1_SHOWDIRTYSTATE=1 
+ 
+export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]\$(__git_ps1 ' %s')\[\033[01;34m\] \$\[\033[00m\] " 
+export PS1="\[\033[G\]$PS1" 
+
+#-----------------------
+# Git Commit Function
+#-----------------------
+
+function gitsetup()
+{
+    git config --global "Tony Brandao" abrandao29@gmail.com  
+    git status
+}
+
+function gitcommit() {
+  git status
+  git add -A
+  git commit -m "$1"
+}
+
+
+function gitpush() {
+  gitcommit
+  git push
+}
+#Git Commit Command
+export -f gitcommit
+export -f gitsetup
+export -f gitpush
 
