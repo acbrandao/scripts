@@ -13,7 +13,10 @@ In Linux : Loops through all the .mp4 files and runs them through the command li
 
 ### Windows Batch convert files
 In Windows : Loops through all the .mp4 files and runs them through the command line ffmpef to convert to H265 and downscale to 1280
+
 ``` dir -exclude *.mp3 | foreach-object { $newname = "resized/"+$_.Basename + "-resized.mp4"; ffmpeg -i "$_"  -c:v libx265 -crf 23 -c:a copy  $newname } ```
+another windows example resize to 1280x720
+``` dir *.* | foreach-object { $newname = $_.Name.Remove($_.Name.Length - $_.Extension.Length) + ".mp4"; .\ffmpeg.exe -i "$_" -s 1280x720 $newname } ```
 
 
 ### Extract A Video Clip
