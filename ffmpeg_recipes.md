@@ -7,10 +7,13 @@ A recent copy of [FFMPEG ] (https://ffmpeg.org/ )  video codec utilities.
 * Download and install FFMPEG for Linux , Windows or Max https://ffmpeg.org/download.html
 * More good examples here: https://www.ostechnix.com/20-ffmpeg-commands-beginners/
 
-### Windows Batch Convert files
-In Windows : Loops through all the .mp4 files and runs them through the command line ffmpef to convert to H265 and downscale to 1280
-
+### Linux  Batch Convert files
+In Linux : Loops through all the .mp4 files and runs them through the command line ffmpef to convert to H265 and downscale to 1280
 ```for %%a in (*.mp4) DO ffmpeg -i "%%a" scale=1280:-1 -c:v libx265 -crf 23 -c:a copy  "resized\%%~na_resized.mp4" ```
+
+### Windows Batch convert files
+In Windows : Loops through all the .mp4 files and runs them through the command line ffmpef to convert to H265 and downscale to 1280
+``` dir -exclude *.mp3 | foreach-object { $newname = "resized/"+$_.Basename + "-resized.mp4"; ffmpeg -i "$_"  -c:v libx265 -crf 23 -c:a copy  $newname } ```
 
 
 ### Extract A Video Clip
