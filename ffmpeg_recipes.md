@@ -9,6 +9,7 @@ A recent copy of [FFMPEG ] (https://ffmpeg.org/ )  video codec utilities.
 
 ### Windows Batch Convert files
 In Windows : Loops through all the .mp4 files and runs them through the command line ffmpef to convert to H265 and downscale to 1280
+
 ```for %%a in (*.mp4) DO ffmpeg -i "%%a" scale=1280:-1 -c:v libx265 -crf 23 -c:a copy  "resized\%%~na_resized.mp4" ```
 
 
