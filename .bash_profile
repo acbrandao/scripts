@@ -293,7 +293,8 @@ export PS1="\[\033[G\]$PS1"
 
 function gitsetup()
 {
-    git config --global "Tony Brandao" abrandao29@gmail.com  
+    git config --global "Tony Brandao" abrandao29@gmail.com
+    git config --global core.editor "nano"
     git status
 }
 
