@@ -20,7 +20,7 @@
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize              
+shopt -s checkwinsize
 
 # Automatically navigate to folder when autocompelted
 shopt -s autocd  
@@ -85,8 +85,6 @@ alias ports="lsof -i -n -P"
 # View only established sockets
 alias estab="ss -p | grep STA"       
  
-# View open ports
-alias openports="netstat -nape --inet"
  
 # Lists all listening ports together with the PID of the associated process
 alias netpid="netstat -tlnp"       
@@ -162,9 +160,6 @@ ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the curr
 ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
 ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
 
-#   spotlight: Search for a file using MacOS Spotlight's metadata
-#   -----------------------------------------------------------
-    spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 
 #   ---------------------------
@@ -318,3 +313,35 @@ export -f gitcommit
 export -f gitsetup
 export -f gitpush
 
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile
+#umask 022
+
+. /etc/profile
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d $HOME/.profile.d ]; then
+
+    for script in $HOME/.profile.d/*; do
+        [ -x "$script" ] || continue
+        . $script
+    done
+
+fi
