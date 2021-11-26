@@ -23,12 +23,9 @@ cpu_load=`top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' `
 
 now=$(date)
 
-#echo -e "${yellow} ____ _   _ ____ ___ ____ _  _    _ _  _ ____ ____ "
-#echo -e "${yellowb}[__   \_/  [__   |  |___ |\/| __ | |\ | |___ |  | "
-#echo -e "${yellow} ___]   |   ___]  |  |___ |  |    | | \| |    |__| ${rst}"
-#echo -e "-----------------------------------------------------------------"
-echo -e "User       : ${whiteb}$(whoami)${rst}  System Time: $now"
-echo -e "System load: ${greenb} $cpu_load  ${rst} Disk: ${yellowb}$diskinfo ${rst} Memory :${yellowb} $mem_free  ${rst}"
+echo -e "----| System Information  -------------------------------------------"
+echo -e "User       : ${yellowb} $(whoami)${rst}  System Time: $now"
+echo -e "System load: ${greenb} $cpu_load  ${rst} Disk: ${greenb}$diskinfo ${rst} Memory :${yellowb} $mem_free  ${rst}"
 echo -e "Hardware   : ${greenb} $(grep -m 1 'model name' /proc/cpuinfo | cut -c 13-)${rst} CPUs: ${yellowb}$(grep -c 'model name' /proc/cpuinfo) ${rst} OS: ${whiteb}$(lsb_release -d | cut -c 13-) ${rst} "
 echo -e "IP  LAN    : ${whiteb} $(hostname -I) ${rst}  Hostname   : ${whiteb}$(hostname)${rst} "
 echo -e "----| Running Services -------------------------------------------"
