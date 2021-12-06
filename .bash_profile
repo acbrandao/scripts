@@ -229,7 +229,7 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
         echo
     }
     
-    system()
+    sys()
     {
 
 	# Ansi color code variables
@@ -350,21 +350,4 @@ export -f gitcommit
 export -f gitsetup
 export -f gitpush
 
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
 
-# the default umask is set in /etc/profile
-#umask 022
-
-. /etc/profile
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
