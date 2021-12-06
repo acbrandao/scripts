@@ -29,5 +29,5 @@ service samba restart
 echo "Samba Status"
 smbstatus
 
-
-echo "in Windows access by going to:  \\\\$(hostname -a)\\\\$SHARE_NAME "
+echo "Now Sharing folder on this computer: $SHARE_NAME as  \\\\$(hostname -a)\\\\$SHARE_NAME "
+echo "To access Windows access by going to:  \\\\$(hostname -a)\\\\$SHARE_NAME "
