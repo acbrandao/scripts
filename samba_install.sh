@@ -36,3 +36,4 @@ smbstatus
 
 echo -e "Now Sharing folder on this computer: $SHARE_NAME as  $(hostname -a) $SHARE_NAME "
 echo -e "To access Windows access by going to: ${yellow} \\\\$(hostname -a)\\\\$SHARE_NAME ${clr}"
+echo -e "To check this host for shares and connetcions use ${yellow}smbstatus${clr}"
