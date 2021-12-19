@@ -31,6 +31,7 @@ echo "Resarting Samba/Cifs Shares"
 service samba restart
 
 echo "Samba Status"
+systemctl status smbd
 smbstatus
 
 echo "Now Sharing folder on this computer: $SHARE_NAME as  \\\\$(hostname -a)\\\\$SHARE_NAME "
