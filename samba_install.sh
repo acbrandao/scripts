@@ -34,5 +34,5 @@ echo "Samba Status"
 systemctl status smbd
 smbstatus
 
-echo "Now Sharing folder on this computer: $SHARE_NAME as  $(hostname -a) $SHARE_NAME "
-echo "To access Windows access by going to: ${yellow} \\\\$(hostname -a)\\\\$SHARE_NAME ${clr}"
+echo -e "Now Sharing folder on this computer: $SHARE_NAME as  $(hostname -a) $SHARE_NAME "
+echo -e "To access Windows access by going to: ${yellow} \\\\$(hostname -a)\\\\$SHARE_NAME ${clr}"
