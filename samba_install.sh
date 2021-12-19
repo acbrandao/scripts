@@ -37,3 +37,7 @@ smbstatus
 echo -e "Now Sharing folder on this computer: $SHARE_NAME as  $(hostname -a) $SHARE_NAME "
 echo -e "To access Windows access by going to: ${yellow} \\\\$(hostname -a)\\\\$SHARE_NAME ${clr}"
 echo -e "To check this host for shares and connetcions use ${yellow}smbstatus${clr}"
+
+#### To connect FROM A WINDOWS Client use a command like this to map a drive:
+##  net use z: \\192.168.50.85\LinuxShare /USER:Administrator  passwd
+
