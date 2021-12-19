@@ -19,7 +19,7 @@ echo -e "Creating  Linux share here: echo -e ${green}$LINUX_SHARE_FOLDER ${clr} 
 mkdir $LINUX_SHARE_FOLDER
 
 echo  "SAMBA TEST: \n Just a sample file. If you are reading this then you can access this share. Can be removed" > $LINUX_SHARE_FOLDER/linux_file_shares.txt
-echo "Modifying ${bold}/etc/samba/smb.conf ${clr} ..."
+echo -e "Modifying ${bold}/etc/samba/smb.conf ${clr} ..."
 
 echo "[$SHARE_NAME]" >> /etc/samba/smb.conf
 echo "comment = Linux shared folder " >> /etc/samba/smb.conf
