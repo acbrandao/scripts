@@ -4,6 +4,7 @@
 #   Change Prompt
 #   ------------------------------------------------------------
 # export PS1="________________________________________________________________________________\n| \w @ \h (\u) \n| => "
+   color_prompt=yes
     export PS2="| => "
     export PS1='\[\033[1;33m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[1;31m\]\w \[\033[1;36m\]\$ \[\033[0m\]'
 
@@ -23,7 +24,7 @@
 shopt -s checkwinsize
 
 # Automatically navigate to folder when autocompelted
-shopt -s autocd  
+shopt -s autocd  histappend
 
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
@@ -43,7 +44,7 @@ alias lu='ls -lur'      # sort by access time
 alias lr='ls -lR'               # recursive ls
 alias lt='ls -ltr'              # sort by date
 alias lm='ls -al |more'         # pipe through 'more'
-alias ls='ls -FGlAhp --color=auto'          # add colors and file type extensions
+alias ls='ls -alF --color=auto'          # add colors and file type extensions
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 
@@ -52,9 +53,6 @@ alias cd..='cd ../'                         # Go back 1 directory level (for fas
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
 alias .3='cd ../../../'                     # Go back 3 directory levels
-alias .4='cd ../../../../'                  # Go back 4 directory levels
-alias .5='cd ../../../../../'               # Go back 5 directory levels
-alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias edit='nano -c '                       # edit:         Opens any file in nano with line # editor
 alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
@@ -64,8 +62,6 @@ alias show_options='shopt'                  # Show_options: display bash options
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
 alias grep='grep -nir --color=auto'         # grep search 
-
-
 
 # Alias's to modified commands, the fun part
 alias home='cd ~'
@@ -157,10 +153,6 @@ alias make10mb='xfs_mkfile 10m ./10MB.dat'      # make10mb:     Creates a file o
 
 alias qfind="find . -name "                 # qfind:    Quickly search for file
 ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
-ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
-
-
 
 #   ---------------------------
 #   5. PROCESS MANAGEMENT
