@@ -7,6 +7,10 @@ Download and install recent copies of :
   * [ImageMagick ] (https://imagemagick.org/ )  Image file format converter  utilities.
   * [GhostScript] (https://www.ghostscript.com/releases/gsdnld.html) Handles rasterization of Vecotr and PDF files
 
+If you are using windows , try https://chocolatey.org/  Windows pakacge manager using these commands:
+  * `choco install iamgemagick`
+  * `choco install ghostscript` 
+
 ### Convert ALL PDF pages into iamge files
 In Linux : Loops through all thePDF pages in  a document and produces seperate JPEG images.
   * density = 100, 150, 300 dpi
