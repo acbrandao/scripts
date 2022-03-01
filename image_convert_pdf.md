@@ -3,7 +3,9 @@
 Below are some of the common shortcuts and recipes that I used to manipulate images and  , to cut, trim, optimize and transcode video when  needed. 
 
 ## REquires:
-Download and install recent copy of [ImageMagick ] (https://imagemagick.org/ )  Image file format converter  utilities.
+Download and install recent copies of :
+  * [ImageMagick ] (https://imagemagick.org/ )  Image file format converter  utilities.
+  * [GhostScript] (https://www.ghostscript.com/releases/gsdnld.html) Handles rasterization of Vecotr and PDF files
 
 ### Convert ALL PDF pages into iamge files
 In Linux : Loops through all thePDF pages in  a document and produces seperate JPEG images.
